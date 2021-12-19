@@ -1,8 +1,10 @@
 package main
 
 import (
+	"fmt"
 	"log"
-	"net/http"
+	"os"
+	"runtime"
 
 	"github.com/joho/godotenv"
 
@@ -11,6 +13,24 @@ import (
 )
 
 func main() {
+	ConfigRuntime()
+	StartWorkers()
+	StartApp()
+}
+
+// ConfigRuntime sets the number of operating system threads.
+func ConfigRuntime() {
+	nuCPU := runtime.NumCPU()
+	runtime.GOMAXPROCS(nuCPU)
+	fmt.Printf("Running with %d CPUs\n", nuCPU)
+}
+
+// StartWorkers start starsWorker by goroutine.
+func StartWorkers() {
+	go statsWorker()
+}
+
+func StartApp() {
 	if err := godotenv.Load(); err != nil {
 		log.Fatalf("Failed to load the env vars: %v", err)
 	}
@@ -21,9 +41,12 @@ func main() {
 	}
 
 	rtr := router.New(auth)
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080"
+	}
 
-	log.Print("Server listening on http://localhost:3000/")
-	if err := http.ListenAndServe("0.0.0.0:3000", rtr); err != nil {
-		log.Fatalf("There was an error with the http server: %v", err)
+	if err := rtr.Run(":" + port); err != nil {
+		log.Panicf("error: %s", err)
 	}
 }
