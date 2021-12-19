@@ -2,6 +2,7 @@ package router
 
 import (
 	"encoding/gob"
+	"os"
 
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-contrib/sessions/cookie"
@@ -18,7 +19,13 @@ import (
 
 // New registers the routes and returns the router.
 func New(auth *authenticator.Authenticator) *gin.Engine {
-	router := gin.Default()
+	ginMode := os.Getenv("GIN_MODE")
+	if ginMode == "" {
+		ginMode = "debug"
+	}
+	gin.SetMode(ginMode)
+
+	router := gin.New()
 
 	// To store custom types in our cookies,
 	// we must first register them using gob.Register
