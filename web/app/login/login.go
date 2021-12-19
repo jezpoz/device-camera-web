@@ -8,7 +8,7 @@ import (
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"
 
-	"github.com/device-camera-auth/platform/authenticator"
+	"github.com/jezpoz/device-camera-web/platform/authenticator"
 )
 
 // Handler for our login.

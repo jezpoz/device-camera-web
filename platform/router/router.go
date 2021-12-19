@@ -7,13 +7,13 @@ import (
 	"github.com/gin-contrib/sessions/cookie"
 	"github.com/gin-gonic/gin"
 
-	"github.com/device-camera-auth/platform/authenticator"
-	"github.com/device-camera-auth/platform/middleware"
-	"github.com/device-camera-auth/web/app/callback"
-	"github.com/device-camera-auth/web/app/home"
-	"github.com/device-camera-auth/web/app/login"
-	"github.com/device-camera-auth/web/app/logout"
-	"github.com/device-camera-auth/web/app/user"
+	"github.com/jezpoz/device-camera-web/platform/authenticator"
+	"github.com/jezpoz/device-camera-web/platform/middleware"
+	"github.com/jezpoz/device-camera-web/web/app/callback"
+	"github.com/jezpoz/device-camera-web/web/app/home"
+	"github.com/jezpoz/device-camera-web/web/app/login"
+	"github.com/jezpoz/device-camera-web/web/app/logout"
+	"github.com/jezpoz/device-camera-web/web/app/user"
 )
 
 // New registers the routes and returns the router.

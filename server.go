@@ -6,8 +6,8 @@ import (
 
 	"github.com/joho/godotenv"
 
-	"github.com/device-camera-auth/platform/authenticator"
-	"github.com/device-camera-auth/platform/router"
+	"github.com/jezpoz/device-camera-web/platform/authenticator"
+	"github.com/jezpoz/device-camera-web/platform/router"
 )
 
 func main() {
