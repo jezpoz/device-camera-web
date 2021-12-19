@@ -16,12 +16,8 @@ func Handler(ctx *gin.Context) {
 		return
 	}
 
-	scheme := "http"
-	if ctx.Request.TLS != nil {
-		scheme = "https"
-	}
-
-	returnTo, err := url.Parse(scheme + "://" + ctx.Request.Host)
+	callbackLogoutUrL := os.Getenv("AUTH0_CALLBACK_LOGOUT_URL")
+	returnTo, err := url.Parse(callbackLogoutUrL)
 	if err != nil {
 		ctx.String(http.StatusInternalServerError, err.Error())
 		return
