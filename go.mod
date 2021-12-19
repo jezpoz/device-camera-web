@@ -1,4 +1,4 @@
-module github.com/device-camera-auth
+module github.com/jezpoz/device-camera-web
 
 go 1.17
 
