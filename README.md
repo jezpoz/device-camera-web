@@ -1,4 +1,4 @@
-# device-camera-web
+# Device Camera Web
 Turn mobile phones into IP cameras that can be used in for instance OBS.
 
 Althought I have my doubts about this project I am trying to create a web app where you can:
